@@ -5,9 +5,11 @@ function WorkDates () {
     let dateOddArray = [];
     let dateEvenArray = [];
     let workSaturdayArray = [];
-    var currentDate = Moment();
+    let currentDate = Moment();
     currentDate.set({hour:0,minute:0,second:0,millisecond:0})
-    var stopDate = Moment().endOf('year');
+    //Set work dates to end of year
+    let stopDate = Moment().endOf('year');
+    //Make arrays of working dates
     while (currentDate <= stopDate) {
         if(currentDate.date() % 2 !== 0 && currentDate.day() !== 6 && currentDate.day() !== 0){
             dateOddArray.push((Moment(currentDate)).toDate());
