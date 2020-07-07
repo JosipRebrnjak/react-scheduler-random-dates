@@ -4,7 +4,7 @@ import DataSource from '../datasource/datasource.json';
 
 export default function RandomizeSchedules(){
   let randArray = [];
- 
+  let newData= [];
 
     //Random day, possible seven day range 
       function getRandomDay(){
@@ -73,12 +73,25 @@ export default function RandomizeSchedules(){
         }
         return true;
       }
-
+    
+    /*
     let newData = DataSource.scheduleData.map(item => {
         let randDatesArray = randomizeDates();
+        console.log(DataSource.scheduleData);
       //  console.log(randDatesArray[0], item.Subject, randDatesArray[1]);
         return{...item, value: [item.EndTime=randDatesArray[0], item.StartTime=randDatesArray[1]]};
     });
+    */
+    function addRandDates(newData){
+      let schData = DataSource.scheduleData;
+      for(let i=0;i<schData.length;i++){
+        let randDatesArray = randomizeDates()
+        schData[i].EndTime=randDatesArray[0];
+        schData[i].StartTime=randDatesArray[1];
+        newData.push(schData[i]);
+    //    console.log(schData[i]);
+      }
+    }
     //add break times to events data array
     function addBreakTimes(newData){
       let currentDate=Moment().utcOffset(0);
@@ -127,6 +140,7 @@ export default function RandomizeSchedules(){
     return newData;
     
     }
+    addRandDates(newData);
     addBreakTimes(newData);
     return newData;
 }

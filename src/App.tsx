@@ -15,7 +15,7 @@ import CheckState from './work_hours/CheckAppointmentsState';
 
 class App extends React.Component{
   componentDidMount(){
-
+    console.log(this);
   }
   private oddDatesWorkHours = WorkDates()[0];
   private evenDatesWorkHours = WorkDates()[1];
